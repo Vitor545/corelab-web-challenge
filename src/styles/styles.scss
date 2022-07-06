@@ -244,4 +244,174 @@ input::placeholder {
 
   // section_home 
 
+  .section_home {
+    margin: 0 auto;
+  }
+
+
+  //card light
+
+  .card {
+    
+    width: 17rem;
+    height: 24.4rem;
+    border-radius: 4px;
+    padding: 1.6rem 2rem;
+    background: $primaryColor;
+
+  .card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+  }
+
+  .card__header_dados {
+    display: flex;
+    div {
+      font-size: 1rem;
+      line-height: 90%;
+      margin-right: 0.4rem;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    
+  }
+
+  .card__header_cor {
+    display: flex;
+    align-items: center;
+    div {
+      font-size: 1rem;
+      line-height: 90%;
+      margin-right: 0.4rem;
+    }
+  }
+
+  .card__name {
+    height: 6.6rem;
+    overflow: auto;
+    word-wrap: break-word;
+    margin-bottom: 0.8rem;
+  }
+
+
+  .card__description {
+    margin-bottom: 1.6rem;
+    div {
+      line-height: 90%;
+      margin-bottom: 0.4rem;
+      font-size: 1.4rem;
+    }
+
+    .description_card {
+      margin-left:  0.4rem;
+      color: $primaryGray;
+      word-wrap: break-word;
+      height: 3rem;
+      font-size: 0.8rem;
+      line-height: 140%;
+      overflow: auto;
+    }
+   
+  }
+
+  .card__price {
+    margin-bottom: 1.6rem;
+    div {
+      line-height: 90%;
+      margin-bottom: 0.4rem;
+      font-size: 1.4rem;
+    }
+
+    div {
+      display: flex;
+      align-items: center;
+      div{
+        line-height: 140%;
+        font-weight: 200;
+        font-size: 0.8rem;
   
+        &:last-child {
+          font-weight: 700;
+        }
+      }
+    }
+  }
+
+  .card__button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    div {
+      display: flex;
+      align-items: center;
+      justify-content:center;
+      background:$primaryColor;
+      border: 1px solid $background;
+      border-radius: 0.4rem;
+      cursor: pointer;
+      width: 2.8rem;
+      height: 1.6rem;
+
+      i {
+        font-size: 0.8rem;
+        color: #fff;
+      }
+
+      
+    }
+  }
+
+  }
+
+
+  // LOGICA DO DARK
+
+
+  .cardScrol {
+    ::-webkit-scrollbar {
+      background: transparent;
+      width: 4px;
+
+  }
+
+  ::-webkit-scrollbar-thumb {
+      background: $background;
+      border-radius: 2px;
+
+  }
+  }
+
+  .cardScrolDark {
+    ::-webkit-scrollbar {
+      background: transparent;
+      width: 4px;
+
+  }
+
+  ::-webkit-scrollbar-thumb {
+      background: $primaryBlack;
+      border-radius: 2px;
+
+  }
+  }
+
+  .description_cardDark {
+    margin-left:  0.4rem;
+    color: $primaryGrayDark;
+    word-wrap: break-word;
+    height: 3rem;
+    font-size: 0.8rem;
+    line-height: 140%;
+    overflow: auto;
+  }
+
+  .cardColor {
+    color: $background;
+  }
+
+  .cardColorDark {
+    color: $primaryBlack;
+  }

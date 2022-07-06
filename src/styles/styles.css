@@ -280,4 +280,189 @@ input::placeholder {
           justify-content: center;
   background: transparent;
 }
+
+.section_home {
+  margin: 0 auto;
+}
+
+.card {
+  width: 17rem;
+  height: 24.4rem;
+  border-radius: 4px;
+  padding: 1.6rem 2rem;
+  background: #755CEF;
+}
+
+.card .card__header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 0.8rem;
+}
+
+.card .card__header_dados {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.card .card__header_dados div {
+  font-size: 1rem;
+  line-height: 90%;
+  margin-right: 0.4rem;
+}
+
+.card .card__header_dados div:last-child {
+  margin-right: 0;
+}
+
+.card .card__header_cor {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.card .card__header_cor div {
+  font-size: 1rem;
+  line-height: 90%;
+  margin-right: 0.4rem;
+}
+
+.card .card__name {
+  height: 6.6rem;
+  overflow: auto;
+  word-wrap: break-word;
+  margin-bottom: 0.8rem;
+}
+
+.card .card__description {
+  margin-bottom: 1.6rem;
+}
+
+.card .card__description div {
+  line-height: 90%;
+  margin-bottom: 0.4rem;
+  font-size: 1.4rem;
+}
+
+.card .card__description .description_card {
+  margin-left: 0.4rem;
+  color: #CCCCCC;
+  word-wrap: break-word;
+  height: 3rem;
+  font-size: 0.8rem;
+  line-height: 140%;
+  overflow: auto;
+}
+
+.card .card__price {
+  margin-bottom: 1.6rem;
+}
+
+.card .card__price div {
+  line-height: 90%;
+  margin-bottom: 0.4rem;
+  font-size: 1.4rem;
+}
+
+.card .card__price div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.card .card__price div div {
+  line-height: 140%;
+  font-weight: 200;
+  font-size: 0.8rem;
+}
+
+.card .card__price div div:last-child {
+  font-weight: 700;
+}
+
+.card .card__button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.card .card__button div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: #755CEF;
+  border: 1px solid #fff;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  width: 2.8rem;
+  height: 1.6rem;
+}
+
+.card .card__button div i {
+  font-size: 0.8rem;
+  color: #fff;
+}
+
+.cardScrol ::-webkit-scrollbar {
+  background: transparent;
+  width: 4px;
+}
+
+.cardScrol ::-webkit-scrollbar-thumb {
+  background: #fff;
+  border-radius: 2px;
+}
+
+.cardScrolDark ::-webkit-scrollbar {
+  background: transparent;
+  width: 4px;
+}
+
+.cardScrolDark ::-webkit-scrollbar-thumb {
+  background: #000000;
+  border-radius: 2px;
+}
+
+.description_cardDark {
+  margin-left: 0.4rem;
+  color: #5d5d5d;
+  word-wrap: break-word;
+  height: 3rem;
+  font-size: 0.8rem;
+  line-height: 140%;
+  overflow: auto;
+}
+
+.cardColor {
+  color: #fff;
+}
+
+.cardColorDark {
+  color: #000000;
+}
 /*# sourceMappingURL=styles.css.map */
