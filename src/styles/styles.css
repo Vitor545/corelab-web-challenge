@@ -365,7 +365,7 @@ input::placeholder {
 }
 
 .card .card__price {
-  margin-bottom: 1.6rem;
+  margin-bottom: 0.8rem;
 }
 
 .card .card__price div {
@@ -391,6 +391,11 @@ input::placeholder {
 
 .card .card__price div div:last-child {
   font-weight: 700;
+}
+
+.card .card__price .price_card {
+  overflow: hidden;
+  height: 1.6rem;
 }
 
 .card .card__button {
@@ -464,5 +469,11 @@ input::placeholder {
 
 .cardColorDark {
   color: #000000;
+}
+
+.card__marca {
+  height: 11px;
+  overflow: auto;
+  max-width: 5.6rem;
 }
 /*# sourceMappingURL=styles.css.map */

@@ -27,7 +27,7 @@ function Home() {
             <div className="card__header_dados">
               <div>2020</div>
               <div>&bull;</div>
-              <div>Toyota</div>
+              <div className="card__marca">Toyota</div>
             </div>
             <div className="card__header_cor">
               <div>Cor</div>
@@ -59,10 +59,10 @@ function Home() {
           </div>
           <div className="card__price">
             <div>Preço:</div>
-            <div>
+            <div className="price_card">
               <div>R$85.000,00</div>
               <div>&bull;</div>
-              <div>R$150.000,00</div>
+              <div>R$150.000,000</div>
             </div>
           </div>
           <div className="card__button">

@@ -318,7 +318,7 @@ input::placeholder {
   }
 
   .card__price {
-    margin-bottom: 1.6rem;
+    margin-bottom: 0.8rem;
     div {
       line-height: 90%;
       margin-bottom: 0.4rem;
@@ -337,6 +337,11 @@ input::placeholder {
           font-weight: 700;
         }
       }
+    }
+
+    .price_card {
+      overflow: hidden;
+      height:1.6rem;
     }
   }
 
@@ -414,4 +419,10 @@ input::placeholder {
 
   .cardColorDark {
     color: $primaryBlack;
+  }
+
+  .card__marca {
+    height: 11px;
+    overflow: auto;
+    max-width: 5.6rem;
   }
