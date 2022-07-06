@@ -1,3 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;600;700&display=swap");
+html {
+  font-size: 62.5%;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -7,5 +12,176 @@
   outline: none;
   text-decoration: none;
   list-style: none;
+  font-size: 1.6rem;
+  font-family: 'Manrope', sans-serif;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+h1 {
+  font-size: 2.4rem;
+  line-height: 90%;
+}
+
+h2 {
+  font-size: 1.6rem;
+}
+
+h3 {
+  font-size: 1.4rem;
+}
+
+h4 {
+  font-size: 1rem;
+}
+
+h5 {
+  font-size: 0.6rem;
+}
+
+p {
+  line-height: 140%;
+}
+
+header {
+  width: 100%;
+}
+
+.container {
+  max-width: 35.8rem;
+}
+
+.header {
+  margin: 0 auto;
+  height: 6.4rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.header img {
+  width: 36px;
+}
+
+.section_login {
+  margin: 0 auto;
+  margin-top: 4rem;
+}
+
+.login_text h1 {
+  margin-bottom: 1rem;
+}
+
+.login_text p {
+  color: #64748B;
+  margin-bottom: 2.4rem;
+  font-size: 1.4rem;
+}
+
+.ms_gerror {
+  width: 100%;
+  height: 5.6rem;
+  background-color: rgba(255, 0, 0, 0.2);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #CB5959;
+  border-radius: 0.4rem;
+  margin-bottom: 2.4rem;
+}
+
+.input label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-weight: 600;
+  font-size: 1.4rem;
+}
+
+input {
+  margin-top: 0.8rem;
+  border: 1px solid #64748B;
+  border-radius: 0.4rem;
+  padding: 1rem;
+  font-size: 1.4rem;
+}
+
+input::-webkit-input-placeholder {
+  font-size: 1.4rem;
+}
+
+input:-ms-input-placeholder {
+  font-size: 1.4rem;
+}
+
+input::-ms-input-placeholder {
+  font-size: 1.4rem;
+}
+
+input::placeholder {
+  font-size: 1.4rem;
+}
+
+.field:first-child {
+  margin-bottom: 2.4rem;
+}
+
+.btn {
+  margin-top: 64px;
+  width: 100%;
+  background-color: #755CEF;
+  font-size: 1.6rem;
+  color: #fff;
+  border-radius: 4px;
+  padding: 1.8rem 0;
+  font-weight: 600;
+}
+
+.btn:hover {
+  background: #684def;
+  cursor: pointer;
+}
+
+.password {
+  position: relative;
+}
+
+.password i {
+  position: absolute;
+  top: 4rem;
+  right: 1.6rem;
+}
+
+.resgisterLink {
+  margin-top: 3.2rem;
+}
+
+.resgisterLink span {
+  font-weight: 700;
+  color: #755CEF;
+}
+
+.resgisterLink span:hover {
+  color: #684def;
+  cursor: pointer;
 }
 /*# sourceMappingURL=styles.css.map */

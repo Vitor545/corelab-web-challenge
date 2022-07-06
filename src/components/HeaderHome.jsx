@@ -4,7 +4,7 @@ import Logo from '../img/logo.jpg';
 function HeaderHome() {
   return (
     <header>
-      <div className="container">
+      <div className="container header">
         <div>
           <img src={Logo} alt="Logo Corelab" />
         </div>

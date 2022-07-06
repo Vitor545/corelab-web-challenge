@@ -19,7 +19,7 @@ function Login() {
     <section>
       <Header />
       <div className="container section_login">
-        <div>
+        <div className="login_text">
           <h1>Login</h1>
           <p>
             Bem vindo de volta. Coloque suas credenciais para acessar sua conta.
@@ -37,7 +37,7 @@ function Login() {
               />
             </label>
           </div>
-          <div className="field input">
+          <div className="field input password">
             <label htmlFor="password_id">
               Senha
               <input
@@ -51,10 +51,13 @@ function Login() {
               className={`fa-solid ${eyePassword}`}
             />
           </div>
-          <div className="field button">
-            <input type="submit" value="Entrar" />
-          </div>
+          <button className="btn" type="submit">
+            Entrar
+          </button>
         </form>
+        <div className="resgisterLink">
+          Ainda não tem uma conta? <span>Cadastrar agora</span>
+        </div>
       </div>
     </section>
   );
