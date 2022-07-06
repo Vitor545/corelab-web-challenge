@@ -184,3 +184,58 @@ input::placeholder {
 }
 
 
+// HEADER PRICIPAL 
+
+.header_container {
+  background-color: $primaryColor;
+}
+
+.headerH {
+  margin: 0 auto;
+  height: 6.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header_icon {
+  width: 24px;
+  height: 24px;
+  background: $background;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.iconHeader {
+    color: $primaryColor;
+    font-size: 1.6rem;
+  }
+
+
+  .header_search {
+    display: flex;
+    align-items: center;
+    background: $background;
+    border-radius: 0.4rem;
+    padding: 0.4rem;
+     input {
+      max-width: 19.4rem;
+      height: 3.2rem;
+      margin: 0;
+      margin-right: 0.6rem;
+      border: 0;
+      border-right: 1px solid $primaryColor;
+      border-radius: 0;
+      background: transparent;
+    }
+    div {
+      width: 3.2rem;
+      height: 3.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+    }
+  }
