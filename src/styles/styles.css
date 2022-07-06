@@ -240,6 +240,7 @@ input::placeholder {
 .iconHeader {
   color: #755CEF;
   font-size: 1.6rem;
+  cursor: pointer;
 }
 
 .header_search {
