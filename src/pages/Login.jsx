@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import Header from '../components/HeaderHome';
 
 function Login() {
@@ -25,7 +26,9 @@ function Login() {
             Bem vindo de volta. Coloque suas credenciais para acessar sua conta.
           </p>
         </div>
-        <div className="ms_gerror">Essa é uma mensagem de erro!</div>
+        <div className="ms_gerror">
+          <span>Error message</span>
+        </div>
         <form action="#" onSubmit={(e) => e.preventDefault()}>
           <div className="field input">
             <label htmlFor="email_id">
@@ -52,11 +55,14 @@ function Login() {
             />
           </div>
           <button className="btn" type="submit">
-            Entrar
+            Continuar
           </button>
         </form>
         <div className="resgisterLink">
-          Ainda não tem uma conta? <span>Cadastrar agora</span>
+          Ainda não tem uma conta?{' '}
+          <NavLink to="/register" exact>
+            <span>Cadastrar agora</span>
+          </NavLink>
         </div>
       </div>
     </section>
