@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../components/Header';
-import Card from '../components/Card';
+import SwiperCard from '../components/SwiperCard';
 
 function Home() {
   return (
@@ -11,7 +11,7 @@ function Home() {
           <h3>Meus</h3>
           <h1>Anúncios</h1>
         </div>
-        <Card />
+        <SwiperCard />
       </div>
     </section>
   );
