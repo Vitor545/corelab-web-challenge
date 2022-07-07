@@ -1,7 +1,48 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../components/Header';
 
 function Edit() {
+  const [nameInput, setnameInput] = useState('');
+  const [marca, setMarca] = useState('');
+  const [ano, setAno] = useState('');
+  const [placa, setPlaca] = useState('');
+  const [cor, setCor] = useState('');
+  const [description, setDescription] = useState('');
+  const [precoMim, setPrecoMin] = useState('');
+  const [precoMax, setPrecoMax] = useState('');
+  const [errorMensage, seterrorMensage] = useState('');
+  const [displayNone, setdisplayNone] = useState('none');
+
+  const onChangeClass = (target) => {
+    if (target.value !== '') {
+      target.classList.add('checked');
+      target.classList.remove('checkedError');
+    } else {
+      target.classList.add('checkedError');
+      target.classList.remove('checked');
+    }
+  };
+
+  const onChange = ({ target }) => {
+    onChangeClass(target);
+    if (target.id === 'name_id') {
+      setnameInput(target.value);
+    } else if (target.id === 'marca_id') {
+      setMarca(target.value);
+    } else if (target.id === 'ano_id') {
+      setAno(target.value);
+    } else if (target.id === 'placa_id') {
+      setPlaca(target.value);
+    } else if (target.id === 'cor_id') {
+      setCor(target.value);
+    } else if (target.id === 'descrição_id') {
+      setDescription(target.value);
+    } else if (target.id === 'pricemin_id') {
+      setPrecoMin(target.value);
+    } else {
+      setPrecoMax(target.value);
+    }
+  };
   return (
     <section>
       <Header />
@@ -20,11 +61,21 @@ function Edit() {
           <div className="fieldOne input">
             <label htmlFor="name_id">
               Nome
-              <input type="text" placeholder="Coloque o nome" id="name_id" />
+              <input
+                type="text"
+                onChange={onChange}
+                placeholder="Coloque o nome"
+                id="name_id"
+              />
             </label>
             <label htmlFor="marca_id">
               Marca
-              <input type="text" placeholder="Coloque a marca" id="marca_id" />
+              <input
+                type="text"
+                onChange={onChange}
+                placeholder="Coloque a marca"
+                id="marca_id"
+              />
             </label>
           </div>
           <div className="fieldTwo input email">
@@ -34,17 +85,23 @@ function Edit() {
                 type="number"
                 placeholder="Selecione o ano"
                 id="ano_id"
+                onChange={onChange}
                 max={2022}
                 min={1885}
               />
             </label>
             <label htmlFor="placa_id">
               Placa
-              <input type="text" placeholder="Coloque a placa" id="placa_id" />
+              <input
+                type="text"
+                onChange={onChange}
+                placeholder="Coloque a placa"
+                id="placa_id"
+              />
             </label>
             <label htmlFor="cor_id">
               Cor do Veículo
-              <input type="color" id="cor_id" />
+              <input type="color" onChange={onChange} id="cor_id" />
             </label>
           </div>
           <div className="field input password">
@@ -54,6 +111,7 @@ function Edit() {
                 id="descrição_id"
                 name="description"
                 rows="5"
+                onChange={onChange}
                 cols="33"
               />
             </label>
@@ -62,7 +120,10 @@ function Edit() {
             <label htmlFor="pricemin_id">
               Preço mínimo
               <input
-                type="text"
+                onChange={onChange}
+                type="number"
+                min={0}
+                max={10000000000}
                 placeholder="Coloque o preço mínimo"
                 id="pricemin_id"
               />
@@ -70,8 +131,11 @@ function Edit() {
             <label htmlFor="pricemax_id">
               Preço Máximo
               <input
-                type="text"
+                type="number"
+                onChange={onChange}
+                min={0}
                 placeholder="Coloque o preço máximo"
+                max={10000000000}
                 id="pricemax_id"
               />
             </label>
