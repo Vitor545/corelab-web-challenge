@@ -37,7 +37,7 @@ function Register() {
       setnameInput(target.value);
     } else if (target.id === 'email_id') {
       setEmail(target.value);
-    } else if (target.id === 'password_id') {
+    } else {
       setPassword(target.value);
     }
   };

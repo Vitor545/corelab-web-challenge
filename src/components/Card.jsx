@@ -31,7 +31,7 @@ function Card() {
         <div className="card__header_dados">
           <div>2020</div>
           <div>&bull;</div>
-          <div className="card__marca">Toyota</div>
+          <div className="card__marca">Mercedes</div>
         </div>
         <div className="card__header_cor">
           <div>Cor</div>
@@ -64,9 +64,9 @@ function Card() {
       <div className="card__price">
         <div>Preço:</div>
         <div className="price_card">
-          <div>R$85.000,00</div>
+          <div>R$10000000000</div>
           <div>&bull;</div>
-          <div>R$150.000,000</div>
+          <div>R$10000000000</div>
         </div>
       </div>
       <div className="card__button">

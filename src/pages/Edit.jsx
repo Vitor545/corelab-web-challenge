@@ -13,8 +13,8 @@ function Edit() {
             para outros usuários.
           </p>
         </div>
-        <div className="ms_gerror">
-          <span>Error message</span>
+        <div className="ms_gerror" style={{ display: displayNone }}>
+          <span>{errorMensage}</span>
         </div>
         <form action="#" onSubmit={(e) => e.preventDefault()}>
           <div className="fieldOne input">
