@@ -5,6 +5,43 @@ import Header from '../components/HeaderHome';
 function Register() {
   const [isVisible, setIsVisible] = useState('password');
   const [eyePassword, seteyePassword] = useState('fa-eye eyePassword');
+  const [nameInput, setnameInput] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorMensage, seterrorMensage] = useState('');
+  const [displayNone, setdisplayNone] = useState('none');
+
+  const onChangeClass = (target) => {
+    if (target.id === 'email_id') {
+      const emailRegex = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+      if (target.value.match(emailRegex)) {
+        target.classList.add('checked');
+        target.classList.remove('checkedError');
+      } else if (target.value === '') {
+        target.classList.remove('checked');
+        target.classList.remove('checkedError');
+      } else {
+        target.classList.add('checkedError');
+        target.classList.remove('checked');
+      }
+    } else if (target.value !== '') {
+      target.classList.add('checked');
+    } else {
+      target.classList.remove('checked');
+    }
+  };
+
+  const onChange = ({ target }) => {
+    onChangeClass(target);
+    if (target.id === 'name_id') {
+      setnameInput(target.value);
+    } else if (target.id === 'email_id') {
+      setEmail(target.value);
+    } else if (target.id === 'password_id') {
+      setPassword(target.value);
+    }
+    return 'error';
+  };
 
   const isVisibleFunction = () => {
     if (isVisible === 'password') {
@@ -24,14 +61,19 @@ function Register() {
           <h1>Register</h1>
           <p>Seja bem vindo. Preencha as credenciais para criar sua conta.</p>
         </div>
-        <div className="ms_gerror">
-          <span>Error message</span>
+        <div className="ms_gerror" style={{ display: displayNone }}>
+          <span>{errorMensage}</span>
         </div>
         <form action="#" onSubmit={(e) => e.preventDefault()}>
           <div className="input">
             <label htmlFor="name_id">
               Nome
-              <input type="text" placeholder="Coloque seu nome" id="name_id" />
+              <input
+                type="text"
+                onChange={onChange}
+                placeholder="Coloque seu nome"
+                id="name_id"
+              />
             </label>
           </div>
           <div className="input email">
@@ -39,6 +81,7 @@ function Register() {
               Endereço de Email
               <input
                 type="text"
+                onChange={onChange}
                 placeholder="Coloque seu Email"
                 id="email_id"
               />
@@ -49,6 +92,7 @@ function Register() {
               Senha
               <input
                 type={isVisible}
+                onChange={onChange}
                 placeholder="Coloque sua Senha"
                 id="password_id"
               />

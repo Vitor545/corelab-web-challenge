@@ -522,3 +522,11 @@ input[type='color' i] {
   border: none;
   border-radius: 0.4rem;
 }
+
+.checkedError {
+  border: 1px solid hsl(0, 62%, 63%) !important;
+}
+
+.checked {
+  border: 1px solid hsl(123, 62%, 63%) !important;
+}

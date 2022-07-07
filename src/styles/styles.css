@@ -618,4 +618,12 @@ input[type='color' i] {
   border: none;
   border-radius: 0.4rem;
 }
+
+.checkedError {
+  border: 1px solid #db6666 !important;
+}
+
+.checked {
+  border: 1px solid #66db6c !important;
+}
 /*# sourceMappingURL=styles.css.map */
