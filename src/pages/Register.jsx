@@ -29,9 +29,9 @@ function Register() {
         </div>
         <form action="#" onSubmit={(e) => e.preventDefault()}>
           <div className="input">
-            <label htmlFor="email_id">
+            <label htmlFor="name_id">
               Nome
-              <input type="text" placeholder="Coloque seu nome" id="email_id" />
+              <input type="text" placeholder="Coloque seu nome" id="name_id" />
             </label>
           </div>
           <div className="input email">
