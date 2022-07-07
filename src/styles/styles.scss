@@ -240,6 +240,7 @@ input::placeholder {
 
 .section_home {
   margin: 0 auto;
+  padding-bottom: 64px;
 }
 
 //card light
@@ -249,7 +250,8 @@ input::placeholder {
   height: 24.4rem;
   border-radius: 4px;
   padding: 1.6rem 1.6rem;
-  background: $primaryColor;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+  background: white;
 
   .card__header {
     display: flex;

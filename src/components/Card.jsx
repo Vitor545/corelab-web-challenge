@@ -1,20 +1,32 @@
 import React, { useState } from 'react';
 
 function Card() {
-  const [isSun, setIsSun] = useState('sun');
-  const [sunNight, setsunNight] = useState('fa-solid fa-sun');
+  const [isSun, setIsSun] = useState('night');
+  const [isDarkColor, setisDarkColor] = useState('cardColor');
+  const [isScrollBar, setisScrollBar] = useState('cardScrol');
+  const [isBallDark, setisBallDark] = useState('white');
+  const [isCinzaDark, setisCinzaDark] = useState('description_card');
+  const [sunNight, setsunNight] = useState('fa-solid fa-moon');
 
   const isVisibleFunction = () => {
     if (isSun === 'sun') {
       setIsSun('night');
+      setisDarkColor('cardColor');
+      setisScrollBar('cardScrol');
+      setisBallDark('white');
+      setisCinzaDark('description_card');
       setsunNight('fa-solid fa-moon');
     } else {
       setIsSun('sun');
+      setisDarkColor('cardColorDark');
+      setisScrollBar('cardScrolDark');
+      setisBallDark('black');
+      setisCinzaDark('description_cardDark');
       setsunNight('fa-solid fa-sun');
     }
   };
   return (
-    <div className="card cardScrol cardColor">
+    <div className={`card ${isScrollBar} ${isDarkColor}`}>
       <div className="card__header">
         <div className="card__header_dados">
           <div>2020</div>
@@ -30,14 +42,20 @@ function Card() {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <circle cx="4.5" cy="4.5" r="3.5" stroke="white" strokeWidth="2" />
+            <circle
+              cx="4.5"
+              cy="4.5"
+              r="3.5"
+              stroke={`${isBallDark}`}
+              strokeWidth="2"
+            />
           </svg>
         </div>
       </div>
       <h1 className="card__name">Gol</h1>
       <div className="card__description">
         <div>Descrição:</div>
-        <p className="description_card">
+        <p className={`${isCinzaDark}`}>
           Carro espaçoso e confortavel, economico e nunca deu problema Carro
           espaçoso e confortavel, economico e nunca deu problema Carro espaçoso
           e confortaveçfggdf

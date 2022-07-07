@@ -286,6 +286,7 @@ input::placeholder {
 
 .section_home {
   margin: 0 auto;
+  padding-bottom: 64px;
 }
 
 .card {
@@ -293,7 +294,9 @@ input::placeholder {
   height: 24.4rem;
   border-radius: 4px;
   padding: 1.6rem 1.6rem;
-  background: #755CEF;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+          box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+  background: white;
 }
 
 .card .card__header {
