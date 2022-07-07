@@ -30,7 +30,7 @@ function Login() {
           <span>Error message</span>
         </div>
         <form action="#" onSubmit={(e) => e.preventDefault()}>
-          <div className="field input">
+          <div className="input">
             <label htmlFor="email_id">
               Endereço de Email
               <input
@@ -40,7 +40,7 @@ function Login() {
               />
             </label>
           </div>
-          <div className="field input password">
+          <div className="input password">
             <label htmlFor="password_id">
               Senha
               <input

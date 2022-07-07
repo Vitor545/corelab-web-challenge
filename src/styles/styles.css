@@ -146,7 +146,7 @@ input::placeholder {
   font-size: 1.4rem;
 }
 
-.field:first-child {
+.input:first-child {
   margin-bottom: 2.4rem;
 }
 
@@ -542,5 +542,80 @@ input::placeholder {
 
 .rec.rec-arrow:disabled {
   visibility: hidden;
+}
+
+.fieldOne {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.fieldOne label {
+  width: 49%;
+}
+
+.fieldTwo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.fieldTwo label {
+  width: 32%;
+}
+
+.fieldTwo:first-child input {
+  background-color: red;
+}
+
+.section_create {
+  margin-bottom: 2.4rem;
+}
+
+textarea {
+  resize: none;
+  margin-top: 0.8rem;
+  border: 1px solid #64748B;
+  border-radius: 0.4rem;
+  padding: 1rem;
+  font-size: 1.4rem;
+  margin-bottom: 2.4rem;
+}
+
+input[type='color' i] {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  width: 11.2rem;
+  height: 41px;
+  cursor: pointer;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: transparent;
+  color: buttontext;
+  border: 1px solid #64748B;
+  outline: none;
+  -o-border-image: none;
+     border-image: none;
+  padding: 1px 2px;
+}
+
+::-webkit-color-swatch {
+  border: none;
+  border-radius: 0.4rem;
 }
 /*# sourceMappingURL=styles.css.map */

@@ -28,13 +28,13 @@ function Register() {
           <span>Error message</span>
         </div>
         <form action="#" onSubmit={(e) => e.preventDefault()}>
-          <div className="field input">
+          <div className="input">
             <label htmlFor="email_id">
               Nome
               <input type="text" placeholder="Coloque seu nome" id="email_id" />
             </label>
           </div>
-          <div className="field input email">
+          <div className="input email">
             <label htmlFor="email_id">
               Endereço de Email
               <input
@@ -44,7 +44,7 @@ function Register() {
               />
             </label>
           </div>
-          <div className="field input password">
+          <div className="input password">
             <label htmlFor="password_id">
               Senha
               <input

@@ -121,7 +121,7 @@ input::placeholder {
   font-size: 1.4rem;
 }
 
-.field:first-child {
+.input:first-child {
   margin-bottom: 2.4rem;
 }
 
@@ -463,4 +463,62 @@ input::placeholder {
 
 .rec.rec-arrow:disabled {
   visibility: hidden;
+}
+
+.fieldOne {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+
+  label {
+    width: 49%;
+  }
+}
+
+.fieldTwo {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  label {
+    width: 32%;
+  }
+
+  &:first-child input {
+    background-color: red;
+  }
+}
+
+.section_create {
+  margin-bottom: 2.4rem;
+}
+
+textarea {
+  resize: none;
+  margin-top: 0.8rem;
+  border: 1px solid $grayInput;
+  border-radius: 0.4rem;
+  padding: 1rem;
+  font-size: 1.4rem;
+  margin-bottom: 2.4rem;
+}
+
+input[type='color' i] {
+  appearance: none;
+  width: 11.2rem;
+  height: 41px;
+  cursor: pointer;
+  box-sizing: border-box;
+  background-color: transparent;
+  color: buttontext;
+  border: 1px solid $grayInput;
+  outline: none;
+  border-image: none;
+  padding: 1px 2px;
+}
+
+::-webkit-color-swatch {
+  border: none;
+  border-radius: 0.4rem;
 }
