@@ -5,6 +5,39 @@ import Header from '../components/HeaderHome';
 function Login() {
   const [isVisible, setIsVisible] = useState('password');
   const [eyePassword, seteyePassword] = useState('fa-eye eyePassword');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorMensage, seterrorMensage] = useState('');
+  const [displayNone, setdisplayNone] = useState('none');
+
+  const onChangeClass = (target) => {
+    if (target.id === 'email_id') {
+      const emailRegex = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+      if (target.value.match(emailRegex)) {
+        target.classList.add('checked');
+        target.classList.remove('checkedError');
+      } else if (target.value === '') {
+        target.classList.remove('checked');
+        target.classList.remove('checkedError');
+      } else {
+        target.classList.add('checkedError');
+        target.classList.remove('checked');
+      }
+    } else if (target.value !== '') {
+      target.classList.add('checked');
+    } else {
+      target.classList.remove('checked');
+    }
+  };
+
+  const onChange = ({ target }) => {
+    onChangeClass(target);
+    if (target.id === 'email_id') {
+      setEmail(target.value);
+    } else {
+      setPassword(target.value);
+    }
+  };
 
   const isVisibleFunction = () => {
     if (isVisible === 'password') {
@@ -26,8 +59,8 @@ function Login() {
             Bem vindo de volta. Coloque suas credenciais para acessar sua conta.
           </p>
         </div>
-        <div className="ms_gerror">
-          <span>Error message</span>
+        <div className="ms_gerror" style={{ display: displayNone }}>
+          <span>{errorMensage}</span>
         </div>
         <form action="#" onSubmit={(e) => e.preventDefault()}>
           <div className="input">
@@ -35,6 +68,7 @@ function Login() {
               Endereço de Email
               <input
                 type="text"
+                onChange={onChange}
                 placeholder="Coloque seu Email"
                 id="email_id"
               />
@@ -45,6 +79,7 @@ function Login() {
               Senha
               <input
                 type={isVisible}
+                onChange={onChange}
                 placeholder="Coloque sua Senha"
                 id="password_id"
               />

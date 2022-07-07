@@ -40,7 +40,6 @@ function Register() {
     } else if (target.id === 'password_id') {
       setPassword(target.value);
     }
-    return 'error';
   };
 
   const isVisibleFunction = () => {
