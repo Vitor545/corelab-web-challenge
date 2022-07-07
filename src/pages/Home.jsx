@@ -5,7 +5,7 @@ import SwiperCard from '../components/SwiperCard';
 function Home() {
   return (
     <section>
-      <Header />
+      <Header typeIcon="fa-solid fa-heart" path="/favorites" />
       <div className="container section_home">
         <div className="section__home">
           <h3>Meus</h3>
