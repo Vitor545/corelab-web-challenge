@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
+import { createAnnotation } from '../lib/api';
 
 function Create() {
   const [nameInput, setnameInput] = useState('');
@@ -12,6 +14,14 @@ function Create() {
   const [precoMax, setPrecoMax] = useState('');
   const [errorMensage, seterrorMensage] = useState('');
   const [displayNone, setdisplayNone] = useState('none');
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const storage = JSON.parse(localStorage.getItem('user'));
+    if (!storage) return navigate('/');
+    return storage;
+  }, [navigate]);
 
   const onChangeClass = (target) => {
     if (target.value !== '') {
@@ -43,6 +53,28 @@ function Create() {
       setPrecoMax(target.value);
     }
   };
+
+  const onClick = async () => {
+    const request = await createAnnotation(
+      nameInput,
+      marca,
+      cor,
+      placa,
+      ano,
+      description,
+      precoMim,
+      precoMax,
+      1
+    );
+
+    if (typeof request === 'string') {
+      seterrorMensage(request);
+      setdisplayNone('flex');
+    } else {
+      setdisplayNone('none');
+    }
+  };
+
   return (
     <section>
       <Header />
@@ -101,7 +133,12 @@ function Create() {
             </label>
             <label htmlFor="cor_id">
               Cor do Veículo
-              <input type="color" onChange={onChange} id="cor_id" />
+              <input
+                default="#000"
+                type="color"
+                onChange={onChange}
+                id="cor_id"
+              />
             </label>
           </div>
           <div className="field input password">
@@ -140,7 +177,7 @@ function Create() {
               />
             </label>
           </div>
-          <button className="btn" type="submit">
+          <button className="btn" onClick={onClick} type="submit">
             Cadastrar
           </button>
         </form>

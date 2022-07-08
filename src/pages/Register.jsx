@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import Header from '../components/HeaderHome';
+import { createUsers } from '../lib/api';
 
 function Register() {
   const [isVisible, setIsVisible] = useState('password');
@@ -49,6 +50,17 @@ function Register() {
     } else {
       setIsVisible('password');
       seteyePassword('fa-eye eyePassword');
+    }
+  };
+
+  const onClick = async () => {
+    const request = await createUsers(nameInput, email, password);
+
+    if (typeof request === 'string') {
+      seterrorMensage(request);
+      setdisplayNone('flex');
+    } else {
+      setdisplayNone('none');
     }
   };
 
@@ -101,13 +113,13 @@ function Register() {
               className={`fa-solid ${eyePassword}`}
             />
           </div>
-          <button className="btn" type="submit">
+          <button className="btn" onClick={onClick} type="submit">
             Continuar
           </button>
         </form>
         <div className="resgisterLink">
           Ja tem uma conta?{' '}
-          <NavLink to="/" exact>
+          <NavLink to="/">
             <span>Login agora</span>
           </NavLink>
         </div>

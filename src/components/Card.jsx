@@ -7,6 +7,15 @@ function Card() {
   const [isBallDark, setisBallDark] = useState('white');
   const [isCinzaDark, setisCinzaDark] = useState('description_card');
   const [sunNight, setsunNight] = useState('fa-solid fa-moon');
+  const [hearthClick, sethearthClick] = useState('fa-regular fa-heart');
+
+  const isFavorite = () => {
+    if (hearthClick === 'fa-regular fa-heart') {
+      sethearthClick('fa-solid fa-heart');
+    } else {
+      sethearthClick('fa-regular fa-heart');
+    }
+  };
 
   const isVisibleFunction = () => {
     if (isSun === 'sun') {
@@ -75,6 +84,9 @@ function Card() {
         </div>
         <div onClick={isVisibleFunction}>
           <i className={`${sunNight}`} />
+        </div>
+        <div onClick={isFavorite}>
+          <i className={`${hearthClick}`} />
         </div>
         <div>
           <i className="fa-solid fa-pen" />

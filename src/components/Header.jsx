@@ -6,7 +6,7 @@ function Header({ typeIcon = 'fa-solid fa-house', path = '/home' }) {
   return (
     <header className="header_container">
       <div className="container headerH">
-        <NavLink to={`${path}`} exact>
+        <NavLink to={`${path}`}>
           <div className="header_icon">
             <i className={`${typeIcon} iconHeader`} />
           </div>
@@ -17,7 +17,7 @@ function Header({ typeIcon = 'fa-solid fa-house', path = '/home' }) {
             <i className="fa-solid fa-magnifying-glass iconHeader" />
           </div>
         </div>
-        <NavLink to="/create" exact>
+        <NavLink to="/create">
           <div className="header_icon">
             <i className="fa-solid fa-plus iconHeader" />
           </div>

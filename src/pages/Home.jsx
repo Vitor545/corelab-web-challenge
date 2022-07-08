@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import SwiperCard from '../components/SwiperCard';
 
 function Home() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const storage = JSON.parse(localStorage.getItem('user'));
+    if (!storage) return navigate('/');
+    return storage;
+  }, [navigate]);
+
   return (
     <section>
       <Header typeIcon="fa-solid fa-heart" path="/favorites" />

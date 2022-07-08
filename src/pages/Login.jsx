@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import Header from '../components/HeaderHome';
+import { loginUsers } from '../lib/api';
 
 function Login() {
   const [isVisible, setIsVisible] = useState('password');
@@ -49,6 +50,18 @@ function Login() {
     }
   };
 
+  const onClick = async () => {
+    const request = await loginUsers(email, password);
+    console.log(request);
+
+    if (typeof request === 'string') {
+      seterrorMensage(request);
+      setdisplayNone('flex');
+    } else {
+      setdisplayNone('none');
+    }
+  };
+
   return (
     <section>
       <Header />
@@ -89,13 +102,13 @@ function Login() {
               className={`fa-solid ${eyePassword}`}
             />
           </div>
-          <button className="btn" type="submit">
+          <button className="btn" onClick={onClick} type="submit">
             Continuar
           </button>
         </form>
         <div className="resgisterLink">
           Ainda não tem uma conta?{' '}
-          <NavLink to="/register" exact>
+          <NavLink to="/register">
             <span>Cadastrar agora</span>
           </NavLink>
         </div>

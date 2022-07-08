@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
+import { updateAnnotation } from '../lib/api';
 
 function Edit() {
   const [nameInput, setnameInput] = useState('');
@@ -12,6 +14,14 @@ function Edit() {
   const [precoMax, setPrecoMax] = useState('');
   const [errorMensage, seterrorMensage] = useState('');
   const [displayNone, setdisplayNone] = useState('none');
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const storage = JSON.parse(localStorage.getItem('user'));
+    if (!storage) return navigate('/');
+    return storage;
+  }, [navigate]);
 
   const onChangeClass = (target) => {
     if (target.value !== '') {
@@ -41,6 +51,27 @@ function Edit() {
       setPrecoMin(target.value);
     } else {
       setPrecoMax(target.value);
+    }
+  };
+
+  const onClick = async () => {
+    const request = await updateAnnotation(
+      nameInput,
+      marca,
+      cor,
+      placa,
+      ano,
+      description,
+      precoMim,
+      precoMax,
+      1
+    );
+
+    if (typeof request === 'string') {
+      seterrorMensage(request);
+      setdisplayNone('flex');
+    } else {
+      setdisplayNone('none');
     }
   };
   return (
@@ -140,7 +171,7 @@ function Edit() {
               />
             </label>
           </div>
-          <button className="btn" type="submit">
+          <button className="btn" onClick={onClick} type="submit">
             Editar
           </button>
         </form>
