@@ -1,15 +1,28 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import SwiperCard from '../components/SwiperCard';
+import { getAllAnnotation } from '../lib/api';
 
 function Home() {
+  const [getAAnnotation, setgetAllAnnotation] = useState([]);
+
   const navigate = useNavigate();
 
+  async function locationRoute() {
+    const { token } = JSON.parse(localStorage.getItem('user'));
+    if (!token) {
+      return navigate('/');
+    }
+    const allA = await getAllAnnotation(token);
+    if (typeof allA === 'string') {
+      return navigate('/');
+    }
+    return setgetAllAnnotation(allA);
+  }
+
   useEffect(() => {
-    const storage = JSON.parse(localStorage.getItem('user'));
-    if (!storage) return navigate('/');
-    return storage;
+    locationRoute();
   }, [navigate]);
 
   return (

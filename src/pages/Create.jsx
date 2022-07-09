@@ -8,7 +8,7 @@ function Create() {
   const [marca, setMarca] = useState('');
   const [ano, setAno] = useState('');
   const [placa, setPlaca] = useState('');
-  const [cor, setCor] = useState('');
+  const [cor, setCor] = useState('#000');
   const [description, setDescription] = useState('');
   const [precoMim, setPrecoMin] = useState('');
   const [precoMax, setPrecoMax] = useState('');
@@ -17,10 +17,16 @@ function Create() {
 
   const navigate = useNavigate();
 
+  async function locationRoute() {
+    const { token } = JSON.parse(localStorage.getItem('user'));
+    if (!token) {
+      return navigate('/');
+    }
+    return navigate('/create');
+  }
+
   useEffect(() => {
-    const storage = JSON.parse(localStorage.getItem('user'));
-    if (!storage) return navigate('/');
-    return storage;
+    locationRoute();
   }, [navigate]);
 
   const onChangeClass = (target) => {
@@ -55,6 +61,7 @@ function Create() {
   };
 
   const onClick = async () => {
+    const { token } = JSON.parse(localStorage.getItem('user'));
     const request = await createAnnotation(
       nameInput,
       marca,
@@ -64,15 +71,17 @@ function Create() {
       description,
       precoMim,
       precoMax,
-      1
+      1,
+      token
     );
 
     if (typeof request === 'string') {
       seterrorMensage(request);
       setdisplayNone('flex');
-    } else {
-      setdisplayNone('none');
+      return navigate('/create');
     }
+    setdisplayNone('none');
+    return navigate('/home');
   };
 
   return (
@@ -133,12 +142,7 @@ function Create() {
             </label>
             <label htmlFor="cor_id">
               Cor do Veículo
-              <input
-                default="#000"
-                type="color"
-                onChange={onChange}
-                id="cor_id"
-              />
+              <input type="color" onChange={onChange} id="cor_id" />
             </label>
           </div>
           <div className="field input password">

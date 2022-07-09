@@ -2,7 +2,6 @@ import axios from 'axios';
 
 const API = "http://localhost:3001";
 
-
 export const createUsers = async (name, email, password) => {
   let result;
 
@@ -40,7 +39,7 @@ let result;
  return result;
 };
 
-export const createAnnotation = async (name, brand, color, board, year, description, priceMin, priceMax, userId) => {
+export const createAnnotation = async (name, brand, color, board, year, description, priceMin, priceMax, userId, token) => {
   let result;
 
    await axios.post(`${API}/announcement`, {
@@ -53,7 +52,11 @@ export const createAnnotation = async (name, brand, color, board, year, descript
     priceMin, 
     priceMax, 
     userId
-  })
+  }, {
+    headers: {
+      'authorization': `${token}` 
+    }
+   })
   .then((response) => {
     result = response.data;
   })
@@ -65,7 +68,7 @@ export const createAnnotation = async (name, brand, color, board, year, descript
 
 };
 
-export const updateAnnotation = async (name, brand, color, board, year, description, priceMin, priceMax, userId) => {
+export const updateAnnotation = async (name, brand, color, board, year, description, priceMin, priceMax, userId, token) => {
   let result;
 
    await axios.post(`${API}/announcement`, {
@@ -78,11 +81,37 @@ export const updateAnnotation = async (name, brand, color, board, year, descript
     priceMin, 
     priceMax, 
     userId
-  })
+  }, {
+    headers: {
+      'authorization': `${token}` 
+    }
+   })
   .then((response) => {
     result = response.data;
   })
   .catch((error) => {
+   result = error.response.data.message;
+  });
+
+ return result;
+
+};
+
+export const getAllAnnotation = async (token) => {
+  let result;
+
+   await axios.get(`${API}/announcement`, {
+    headers: {
+      'authorization': `${token}` 
+    }
+   })
+  .then((response) => {
+    console.log(response.data);
+    result = response.data;
+  })
+  .catch((error) => {
+    console.log(error.response.data.message);
+
    result = error.response.data.message;
   });
 

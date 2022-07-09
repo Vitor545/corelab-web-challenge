@@ -26,8 +26,14 @@ function Header({ typeIcon = 'fa-solid fa-house', path = '/home' }) {
     </header>
   );
 }
-Header.propTypes = {
-  typeIcon: PropTypes.string.isRequired,
-  path: PropTypes.string.isRequired,
+Header.defaultProps = {
+  typeIcon: undefined,
+  path: undefined,
 };
+
+Header.propTypes = {
+  typeIcon: PropTypes.string,
+  path: PropTypes.string,
+};
+
 export default Header;

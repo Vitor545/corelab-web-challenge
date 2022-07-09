@@ -6,11 +6,18 @@ import SwiperCard from '../components/SwiperCard';
 function Favorites() {
   const navigate = useNavigate();
 
+  async function locationRoute() {
+    const { token } = JSON.parse(localStorage.getItem('user'));
+    if (!token) {
+      return navigate('/');
+    }
+    return navigate('/favorites');
+  }
+
   useEffect(() => {
-    const storage = JSON.parse(localStorage.getItem('user'));
-    if (!storage) return navigate('/');
-    return storage;
+    locationRoute();
   }, [navigate]);
+
   return (
     <section>
       <Header />

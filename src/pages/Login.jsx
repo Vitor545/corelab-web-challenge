@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import Header from '../components/HeaderHome';
 import { loginUsers } from '../lib/api';
 
@@ -10,6 +10,7 @@ function Login() {
   const [password, setPassword] = useState('');
   const [errorMensage, seterrorMensage] = useState('');
   const [displayNone, setdisplayNone] = useState('none');
+  const navigate = useNavigate();
 
   const onChangeClass = (target) => {
     if (target.id === 'email_id') {
@@ -57,9 +58,12 @@ function Login() {
     if (typeof request === 'string') {
       seterrorMensage(request);
       setdisplayNone('flex');
-    } else {
-      setdisplayNone('none');
+      return navigate('/');
     }
+    setdisplayNone('none');
+    const { token, user } = request;
+    localStorage.setItem('user', JSON.stringify({ token, ...user }));
+    return navigate('/home');
   };
 
   return (

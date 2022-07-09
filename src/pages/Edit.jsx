@@ -17,10 +17,16 @@ function Edit() {
 
   const navigate = useNavigate();
 
+  async function locationRoute() {
+    const { token } = JSON.parse(localStorage.getItem('user'));
+    if (!token) {
+      return navigate('/');
+    }
+    return navigate('/edit');
+  }
+
   useEffect(() => {
-    const storage = JSON.parse(localStorage.getItem('user'));
-    if (!storage) return navigate('/');
-    return storage;
+    locationRoute();
   }, [navigate]);
 
   const onChangeClass = (target) => {
@@ -55,6 +61,7 @@ function Edit() {
   };
 
   const onClick = async () => {
+    const { token } = JSON.parse(localStorage.getItem('user'));
     const request = await updateAnnotation(
       nameInput,
       marca,
@@ -64,7 +71,8 @@ function Edit() {
       description,
       precoMim,
       precoMax,
-      1
+      1,
+      token
     );
 
     if (typeof request === 'string') {

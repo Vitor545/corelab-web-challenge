@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 import Header from '../components/HeaderHome';
 import { createUsers } from '../lib/api';
 
@@ -11,6 +11,7 @@ function Register() {
   const [password, setPassword] = useState('');
   const [errorMensage, seterrorMensage] = useState('');
   const [displayNone, setdisplayNone] = useState('none');
+  const navigate = useNavigate();
 
   const onChangeClass = (target) => {
     if (target.id === 'email_id') {
@@ -59,9 +60,10 @@ function Register() {
     if (typeof request === 'string') {
       seterrorMensage(request);
       setdisplayNone('flex');
-    } else {
-      setdisplayNone('none');
+      return navigate('/');
     }
+    setdisplayNone('none');
+    return navigate('/');
   };
 
   return (
