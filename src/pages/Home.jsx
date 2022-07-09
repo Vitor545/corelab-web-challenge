@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import SwiperCard from '../components/SwiperCard';
-import { getAllAnnotation } from '../lib/api';
 
 function Home() {
-  const [getAAnnotation, setgetAllAnnotation] = useState([]);
-
   const navigate = useNavigate();
 
   async function locationRoute() {
@@ -14,11 +11,7 @@ function Home() {
     if (!token) {
       return navigate('/');
     }
-    const allA = await getAllAnnotation(token);
-    if (typeof allA === 'string') {
-      return navigate('/');
-    }
-    return setgetAllAnnotation(allA);
+    return navigate('/home');
   }
 
   useEffect(() => {
@@ -33,14 +26,14 @@ function Home() {
           <h3>Meus</h3>
           <h1>Anúncios</h1>
         </div>
-        <SwiperCard />
+        <SwiperCard isMy />
       </div>
       <div className="container section_home">
         <div className="section__home">
           <h3>Todos os</h3>
           <h1>Anúncios</h1>
         </div>
-        <SwiperCard />
+        <SwiperCard isMy={false} />
       </div>
     </section>
   );

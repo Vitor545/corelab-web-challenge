@@ -26,7 +26,7 @@ function Favorites() {
           <h3>Meus</h3>
           <h1>Favoritos</h1>
         </div>
-        <SwiperCard />
+        <SwiperCard isMy isFavorite />
       </div>
     </section>
   );

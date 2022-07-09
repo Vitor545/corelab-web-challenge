@@ -61,7 +61,7 @@ function Create() {
   };
 
   const onClick = async () => {
-    const { token } = JSON.parse(localStorage.getItem('user'));
+    const { token, id } = JSON.parse(localStorage.getItem('user'));
     const request = await createAnnotation(
       nameInput,
       marca,
@@ -71,7 +71,7 @@ function Create() {
       description,
       precoMim,
       precoMax,
-      1,
+      id,
       token
     );
 

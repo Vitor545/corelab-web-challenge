@@ -106,11 +106,29 @@ export const getAllAnnotation = async (token) => {
     }
    })
   .then((response) => {
-    console.log(response.data);
     result = response.data;
   })
   .catch((error) => {
-    console.log(error.response.data.message);
+
+   result = error.response.data.message;
+  });
+
+ return result;
+
+};
+
+export const getInfoUserapi = async (userId, token) => {
+  let result;
+
+   await axios.get(`${API}/user/${userId}`, {
+    headers: {
+      'authorization': `${token}` 
+    }
+   })
+  .then((response) => {
+    result = response.data;
+  })
+  .catch((error) => {
 
    result = error.response.data.message;
   });

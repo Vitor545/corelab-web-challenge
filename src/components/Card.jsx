@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
-function Card() {
+function Card({ name, brand, color, description, priceMax, priceMin, year }) {
   const [isSun, setIsSun] = useState('night');
   const [isDarkColor, setisDarkColor] = useState('cardColor');
   const [isScrollBar, setisScrollBar] = useState('cardScrol');
@@ -35,12 +36,15 @@ function Card() {
     }
   };
   return (
-    <div className={`card ${isScrollBar} ${isDarkColor}`}>
+    <div
+      className={`card ${isScrollBar} ${isDarkColor}`}
+      style={{ background: color }}
+    >
       <div className="card__header">
         <div className="card__header_dados">
-          <div>2020</div>
+          <div>{year}</div>
           <div>&bull;</div>
-          <div className="card__marca">Mercedes</div>
+          <div className="card__marca">{brand}</div>
         </div>
         <div className="card__header_cor">
           <div>Cor</div>
@@ -61,21 +65,17 @@ function Card() {
           </svg>
         </div>
       </div>
-      <h1 className="card__name">Gol</h1>
+      <h1 className="card__name">{name}</h1>
       <div className="card__description">
         <div>Descrição:</div>
-        <p className={`${isCinzaDark}`}>
-          Carro espaçoso e confortavel, economico e nunca deu problema Carro
-          espaçoso e confortavel, economico e nunca deu problema Carro espaçoso
-          e confortaveçfggdf
-        </p>
+        <p className={`${isCinzaDark}`}>{description}</p>
       </div>
       <div className="card__price">
         <div>Preço:</div>
         <div className="price_card">
-          <div>R$10000000000</div>
+          <div>R${priceMin}</div>
           <div>&bull;</div>
-          <div>R$10000000000</div>
+          <div>R${priceMax}</div>
         </div>
       </div>
       <div className="card__button">
@@ -95,5 +95,16 @@ function Card() {
     </div>
   );
 }
+
+Card.propTypes = {
+  id: PropTypes.number,
+  name: PropTypes.string,
+  brand: PropTypes.string,
+  color: PropTypes.string,
+  description: PropTypes.string,
+  priceMax: PropTypes.string,
+  priceMin: PropTypes.string,
+  year: PropTypes.string,
+}.isRequired;
 
 export default Card;

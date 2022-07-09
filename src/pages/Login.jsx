@@ -53,7 +53,6 @@ function Login() {
 
   const onClick = async () => {
     const request = await loginUsers(email, password);
-    console.log(request);
 
     if (typeof request === 'string') {
       seterrorMensage(request);
