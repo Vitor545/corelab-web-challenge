@@ -1,8 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 function Header({ typeIcon = 'fa-solid fa-house', path = '/home' }) {
+  const navigate = useNavigate();
+
+  const [valueInput, setValue] = useState('');
+
+  const onChange = ({ target }) => {
+    setValue(target.value);
+  };
+
+  const onClick = () => {
+    navigate(`/search/${valueInput}`);
+    return window.location.reload();
+  };
+
   return (
     <header className="header_container">
       <div className="container headerH">
@@ -12,8 +25,8 @@ function Header({ typeIcon = 'fa-solid fa-house', path = '/home' }) {
           </div>
         </NavLink>
         <div className="header_search">
-          <input type="text" />
-          <div>
+          <input type="text" onChange={onChange} />
+          <div onClick={onClick}>
             <i className="fa-solid fa-magnifying-glass iconHeader" />
           </div>
         </div>

@@ -179,8 +179,6 @@ export const deleteAnnotation = async (userId, token, annotationId) => {
 
 };
 
-
-
 export const createFavorite = async (userId, announcementId, token) => {
   let result;
 
@@ -218,6 +216,26 @@ export const deleteFavorite = async (userId, announcementId, token) => {
     result = response.data;
   })
   .catch((error) => {
+   result = error.response.data.message;
+  });
+
+ return result;
+
+};
+
+export const getAllFavorites = async (userId, token) => {
+  let result;
+
+   await axios.get(`${API}/favorites/${userId}`, {
+    headers: {
+      'authorization': `${token}` 
+    }
+   })
+  .then((response) => {
+    result = response.data;
+  })
+  .catch((error) => {
+
    result = error.response.data.message;
   });
 

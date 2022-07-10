@@ -1,8 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { deleteAnnotation, createFavorite, deleteFavorite } from '../lib/api';
+import {
+  deleteAnnotation,
+  createFavorite,
+  deleteFavorite,
+  getAllFavorites,
+} from '../lib/api';
 
 function Card({
   id,
@@ -34,6 +39,22 @@ function Card({
       await deleteFavorite(dataU.id, id, dataU.token);
     }
   };
+
+  const favoriteHome = async () => {
+    const dataU = JSON.parse(localStorage.getItem('user'));
+    const getAllFavorite = await getAllFavorites(dataU.id, dataU.token);
+    if (getAllFavorite.length === 0) {
+      return sethearthClick('fa-regular fa-heart');
+    }
+    const isVerify = getAllFavorite.find((obj) => obj.announcementId === id);
+    console.log(isVerify);
+    if (isVerify) return sethearthClick('fa-solid fa-heart');
+    return sethearthClick('fa-regular fa-heart');
+  };
+
+  useEffect(() => {
+    favoriteHome();
+  }, []);
 
   const isVisibleFunction = () => {
     if (isSun === 'sun') {

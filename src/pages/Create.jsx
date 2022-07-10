@@ -137,6 +137,7 @@ function Create() {
                 type="text"
                 onChange={onChange}
                 placeholder="Coloque a placa"
+                max={255}
                 id="placa_id"
               />
             </label>
@@ -152,6 +153,7 @@ function Create() {
                 id="descrição_id"
                 name="description"
                 rows="5"
+                max={255}
                 onChange={onChange}
                 cols="33"
               />
@@ -164,7 +166,6 @@ function Create() {
                 onChange={onChange}
                 type="number"
                 min={0}
-                max={10000000000}
                 placeholder="Coloque o preço mínimo"
                 id="pricemin_id"
               />
@@ -174,7 +175,6 @@ function Create() {
               <input
                 type="number"
                 onChange={onChange}
-                min={0}
                 placeholder="Coloque o preço máximo"
                 max={10000000000}
                 id="pricemax_id"

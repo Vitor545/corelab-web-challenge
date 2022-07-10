@@ -22,19 +22,18 @@ function Edit() {
 
   const onHome = async () => {
     const { token } = JSON.parse(localStorage.getItem('user'));
-    const { name, board, color, brand, priceMin, priceMax, description, year } =
-      await getOneAnnotation(ids, token);
+    const data = await getOneAnnotation(ids, token);
     if (typeof data === 'string') {
       return navigate('/home');
     }
-    setnameInput(name);
-    setMarca(brand);
-    setAno(year);
-    setPlaca(board);
-    setCor(color);
-    setDescription(description);
-    setPrecoMin(priceMin);
-    setPrecoMax(priceMax);
+    setnameInput(data.name);
+    setMarca(data.brand);
+    setAno(data.year);
+    setPlaca(data.board);
+    setCor(data.color);
+    setDescription(data.description);
+    setPrecoMin(data.priceMin);
+    setPrecoMax(data.priceMax);
     setIsLoad(false);
     return navigate(`/edit/${ids}`);
   };
