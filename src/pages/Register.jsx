@@ -60,7 +60,7 @@ function Register() {
     if (typeof request === 'string') {
       seterrorMensage(request);
       setdisplayNone('flex');
-      return navigate('/');
+      return navigate('/register');
     }
     setdisplayNone('none');
     return navigate('/');

@@ -1,7 +1,19 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { deleteAnnotation, createFavorite, deleteFavorite } from '../lib/api';
 
-function Card({ name, brand, color, description, priceMax, priceMin, year }) {
+function Card({
+  id,
+  name,
+  brand,
+  color,
+  description,
+  priceMax,
+  priceMin,
+  year,
+}) {
   const [isSun, setIsSun] = useState('night');
   const [isDarkColor, setisDarkColor] = useState('cardColor');
   const [isScrollBar, setisScrollBar] = useState('cardScrol');
@@ -10,11 +22,16 @@ function Card({ name, brand, color, description, priceMax, priceMin, year }) {
   const [sunNight, setsunNight] = useState('fa-solid fa-moon');
   const [hearthClick, sethearthClick] = useState('fa-regular fa-heart');
 
-  const isFavorite = () => {
+  const navigate = useNavigate();
+
+  const isFavorite = async () => {
+    const dataU = JSON.parse(localStorage.getItem('user'));
     if (hearthClick === 'fa-regular fa-heart') {
       sethearthClick('fa-solid fa-heart');
+      await createFavorite(dataU.id, id, dataU.token);
     } else {
       sethearthClick('fa-regular fa-heart');
+      await deleteFavorite(dataU.id, id, dataU.token);
     }
   };
 
@@ -35,6 +52,22 @@ function Card({ name, brand, color, description, priceMax, priceMin, year }) {
       setsunNight('fa-solid fa-sun');
     }
   };
+
+  const isDelete = async () => {
+    const dataU = JSON.parse(localStorage.getItem('user'));
+    const deleteA = await deleteAnnotation(dataU.id, dataU.token, id);
+    if (typeof deleteA === 'string') {
+      return toast.error(deleteA, {
+        position: toast.POSITION.TOP_RIGHT,
+        pauseOnHover: false,
+        closeOnClick: true,
+      });
+    }
+    return window.location.reload();
+  };
+
+  const isEdit = (idEdit) => navigate(`/edit/${idEdit}`);
+
   return (
     <div
       className={`card ${isScrollBar} ${isDarkColor}`}
@@ -79,7 +112,7 @@ function Card({ name, brand, color, description, priceMax, priceMin, year }) {
         </div>
       </div>
       <div className="card__button">
-        <div>
+        <div onClick={isDelete}>
           <i className="fa-solid fa-xmark" />
         </div>
         <div onClick={isVisibleFunction}>
@@ -88,7 +121,7 @@ function Card({ name, brand, color, description, priceMax, priceMin, year }) {
         <div onClick={isFavorite}>
           <i className={`${hearthClick}`} />
         </div>
-        <div>
+        <div onClick={() => isEdit(id)}>
           <i className="fa-solid fa-pen" />
         </div>
       </div>

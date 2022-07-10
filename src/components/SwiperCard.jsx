@@ -14,10 +14,11 @@ function SwiperCard({ isMy = true, isFavorite }) {
   const navigate = useNavigate();
 
   async function getInfoUser() {
-    const { token, id } = JSON.parse(localStorage.getItem('user'));
-    if (!token) {
+    const dataU = JSON.parse(localStorage.getItem('user'));
+    if (!dataU) {
       return navigate('/');
     }
+    const { token, id } = dataU;
     const allAU = await getInfoUserapi(id, token);
     const allA = await getAllAnnotation(token);
     if (typeof allA === 'string' || allAU === 'string') {

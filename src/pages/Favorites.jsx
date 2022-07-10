@@ -7,8 +7,8 @@ function Favorites() {
   const navigate = useNavigate();
 
   async function locationRoute() {
-    const { token } = JSON.parse(localStorage.getItem('user'));
-    if (!token) {
+    const dataU = JSON.parse(localStorage.getItem('user'));
+    if (!dataU) {
       return navigate('/');
     }
     return navigate('/favorites');

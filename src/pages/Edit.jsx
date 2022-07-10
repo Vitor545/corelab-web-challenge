@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Header from '../components/Header';
-import { updateAnnotation } from '../lib/api';
+import { updateAnnotation, getOneAnnotation } from '../lib/api';
+import Loading from '../components/Loading';
 
 function Edit() {
   const [nameInput, setnameInput] = useState('');
@@ -9,25 +10,46 @@ function Edit() {
   const [ano, setAno] = useState('');
   const [placa, setPlaca] = useState('');
   const [cor, setCor] = useState('');
-  const [description, setDescription] = useState('');
+  const [descriptionState, setDescription] = useState('');
   const [precoMim, setPrecoMin] = useState('');
   const [precoMax, setPrecoMax] = useState('');
   const [errorMensage, seterrorMensage] = useState('');
   const [displayNone, setdisplayNone] = useState('none');
+  const [isLoad, setIsLoad] = useState(true);
 
   const navigate = useNavigate();
+  const { ids } = useParams();
+
+  const onHome = async () => {
+    const { token } = JSON.parse(localStorage.getItem('user'));
+    const { name, board, color, brand, priceMin, priceMax, description, year } =
+      await getOneAnnotation(ids, token);
+    if (typeof data === 'string') {
+      return navigate('/home');
+    }
+    setnameInput(name);
+    setMarca(brand);
+    setAno(year);
+    setPlaca(board);
+    setCor(color);
+    setDescription(description);
+    setPrecoMin(priceMin);
+    setPrecoMax(priceMax);
+    setIsLoad(false);
+    return navigate(`/edit/${ids}`);
+  };
 
   async function locationRoute() {
-    const { token } = JSON.parse(localStorage.getItem('user'));
-    if (!token) {
+    const dataU = JSON.parse(localStorage.getItem('user'));
+    if (!dataU) {
       return navigate('/');
     }
-    return navigate('/edit');
+    return onHome();
   }
 
   useEffect(() => {
     locationRoute();
-  }, [navigate]);
+  }, []);
 
   const onChangeClass = (target) => {
     if (target.value !== '') {
@@ -61,28 +83,32 @@ function Edit() {
   };
 
   const onClick = async () => {
-    const { token } = JSON.parse(localStorage.getItem('user'));
+    const { token, id } = JSON.parse(localStorage.getItem('user'));
     const request = await updateAnnotation(
       nameInput,
       marca,
       cor,
       placa,
       ano,
-      description,
+      descriptionState,
       precoMim,
       precoMax,
-      1,
-      token
+      id,
+      token,
+      ids
     );
 
     if (typeof request === 'string') {
       seterrorMensage(request);
       setdisplayNone('flex');
-    } else {
-      setdisplayNone('none');
+      return navigate(`/edit/${ids}`);
     }
+    setdisplayNone('none');
+    return navigate('/home');
   };
-  return (
+  return isLoad ? (
+    <Loading />
+  ) : (
     <section>
       <Header />
       <div className="container section_login section_create">
@@ -103,8 +129,9 @@ function Edit() {
               <input
                 type="text"
                 onChange={onChange}
-                placeholder="Coloque o nome"
                 id="name_id"
+                placeholder="Coloque o nome"
+                value={nameInput}
               />
             </label>
             <label htmlFor="marca_id">
@@ -113,6 +140,7 @@ function Edit() {
                 type="text"
                 onChange={onChange}
                 placeholder="Coloque a marca"
+                value={marca}
                 id="marca_id"
               />
             </label>
@@ -124,6 +152,7 @@ function Edit() {
                 type="number"
                 placeholder="Selecione o ano"
                 id="ano_id"
+                value={ano}
                 onChange={onChange}
                 max={2022}
                 min={1885}
@@ -134,13 +163,14 @@ function Edit() {
               <input
                 type="text"
                 onChange={onChange}
+                value={placa}
                 placeholder="Coloque a placa"
                 id="placa_id"
               />
             </label>
             <label htmlFor="cor_id">
               Cor do Veículo
-              <input type="color" onChange={onChange} id="cor_id" />
+              <input type="color" value={cor} onChange={onChange} id="cor_id" />
             </label>
           </div>
           <div className="field input password">
@@ -149,6 +179,7 @@ function Edit() {
               <textarea
                 id="descrição_id"
                 name="description"
+                value={descriptionState}
                 rows="5"
                 onChange={onChange}
                 cols="33"
@@ -162,6 +193,7 @@ function Edit() {
                 onChange={onChange}
                 type="number"
                 min={0}
+                value={precoMim}
                 max={10000000000}
                 placeholder="Coloque o preço mínimo"
                 id="pricemin_id"
@@ -173,6 +205,7 @@ function Edit() {
                 type="number"
                 onChange={onChange}
                 min={0}
+                value={precoMax}
                 placeholder="Coloque o preço máximo"
                 max={10000000000}
                 id="pricemax_id"

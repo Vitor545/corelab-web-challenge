@@ -5,6 +5,7 @@ import Register from '../pages/Register';
 import Home from '../pages/Home';
 import Create from '../pages/Create';
 import Edit from '../pages/Edit';
+import '../styles/styles.css';
 import Favorites from '../pages/Favorites';
 import NotFound from '../pages/NotFound';
 
@@ -15,7 +16,7 @@ export default function RoutesApp() {
       <Route exact path="/register" element={<Register />} />
       <Route exact path="/home" element={<Home />} />
       <Route exact path="/create" element={<Create />} />
-      <Route exact path="/edit" element={<Edit />} />
+      <Route exact path="/edit/:ids" element={<Edit />} />
       <Route exact path="/favorites" element={<Favorites />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
