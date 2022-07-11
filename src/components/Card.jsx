@@ -43,7 +43,7 @@ function Card({
   const favoriteHome = async () => {
     const dataU = JSON.parse(localStorage.getItem('user'));
     const getAllFavorite = await getAllFavorites(dataU.id, dataU.token);
-    if (getAllFavorite.length === 0) {
+    if (getAllFavorite === 'Usuário sem favoritos') {
       return sethearthClick('fa-regular fa-heart');
     }
     const isVerify = getAllFavorite.find((obj) => obj.announcementId === id);

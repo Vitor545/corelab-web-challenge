@@ -70,7 +70,7 @@ function Login() {
       <Header />
       <div className="container section_login">
         <div className="login_text">
-          <h1>Login</h1>
+          <h1 data-testid="login_title">Login</h1>
           <p>
             Bem vindo de volta. Coloque suas credenciais para acessar sua conta.
           </p>
@@ -83,6 +83,7 @@ function Login() {
             <label htmlFor="email_id">
               Endereço de Email
               <input
+                data-testid="input_login_email"
                 type="text"
                 onChange={onChange}
                 placeholder="Coloque seu Email"
@@ -95,6 +96,7 @@ function Login() {
               Senha
               <input
                 type={isVisible}
+                data-testid="input_login_senha"
                 onChange={onChange}
                 placeholder="Coloque sua Senha"
                 id="password_id"
@@ -105,7 +107,12 @@ function Login() {
               className={`fa-solid ${eyePassword}`}
             />
           </div>
-          <button className="btn" onClick={onClick} type="submit">
+          <button
+            className="btn"
+            onClick={onClick}
+            data-testid="login_button"
+            type="submit"
+          >
             Continuar
           </button>
         </form>
