@@ -5,10 +5,12 @@ import Register from '../pages/Register';
 import Home from '../pages/Home';
 import Create from '../pages/Create';
 import Edit from '../pages/Edit';
+import Filter from '../pages/Filter';
 import '../styles/styles.css';
 import Favorites from '../pages/Favorites';
 import NotFound from '../pages/NotFound';
 import Search from './Search';
+import SearchFIlter from './SearchFIlter';
 
 export default function RoutesApp() {
   return (
@@ -18,7 +20,9 @@ export default function RoutesApp() {
       <Route exact path="/home" element={<Home />} />
       <Route exact path="/create" element={<Create />} />
       <Route exact path="/search/:values" element={<Search />} />
+      <Route exact path="/searchFilter/:values" element={<SearchFIlter />} />
       <Route exact path="/edit/:ids" element={<Edit />} />
+      <Route exact path="/filter" element={<Filter />} />
       <Route exact path="/favorites" element={<Favorites />} />
       <Route path="*" element={<NotFound />} />
     </Routes>

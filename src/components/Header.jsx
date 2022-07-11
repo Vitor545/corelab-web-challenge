@@ -30,6 +30,11 @@ function Header({ typeIcon = 'fa-solid fa-house', path = '/home' }) {
             <i className="fa-solid fa-magnifying-glass iconHeader" />
           </div>
         </div>
+        <NavLink to="/filter">
+          <div className="header_icon">
+            <i className="fa-solid fa-filter iconHeader" />
+          </div>
+        </NavLink>
         <NavLink to="/create">
           <div className="header_icon">
             <i className="fa-solid fa-plus iconHeader" />
