@@ -33,6 +33,12 @@ function SwiperCard({ isMy = true, isFavorite }) {
     getInfoUser();
   }, []);
 
+  const breakPoints = [
+    { width: 1, itemsToShow: 2 },
+    { width: 680, itemsToShow: 3, itemsToScroll: 2, pagination: false },
+    { width: 1200, itemsToShow: 5, itemsToScroll: 2, pagination: false },
+  ];
+
   const isFavorites = (stg) => {
     if (stg) {
       return getUserAnnotation.favoritos.map(
@@ -69,7 +75,7 @@ function SwiperCard({ isMy = true, isFavorite }) {
   return isLoad ? (
     <Loading />
   ) : (
-    <Carousel itemsToShow={2} pagination={false} className="swiper">
+    <Carousel breakPoints={breakPoints} pagination={false} className="swiper">
       {!isMy
         ? getAAnnotation.map(
             ({

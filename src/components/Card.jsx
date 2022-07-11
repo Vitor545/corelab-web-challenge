@@ -47,7 +47,6 @@ function Card({
       return sethearthClick('fa-regular fa-heart');
     }
     const isVerify = getAllFavorite.find((obj) => obj.announcementId === id);
-    console.log(isVerify);
     if (isVerify) return sethearthClick('fa-solid fa-heart');
     return sethearthClick('fa-regular fa-heart');
   };

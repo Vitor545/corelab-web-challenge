@@ -147,7 +147,7 @@ function Edit() {
             </label>
           </div>
           <button className="btn" onClick={onClick} type="submit">
-            Editar
+            Pesquisar
           </button>
         </form>
       </div>
